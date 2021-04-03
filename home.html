@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Home page for the PC Building Advisor application.">
     <meta name="author" content="Marcel Willis">
     <!-- Site theme -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -19,10 +19,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ce0b201871.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="scripts/dropdown.js"></script>  
+    <script type="text/javascript" src="scripts/dropdown.js"></script>
+    <script type="text/javascript" src="scripts/analyzeComponents.js"></script>
 </head>
-
 <body>
+    <!--Background Image-->
+    <div role="img1" aria-label="PC Components">
+        <img src="pics/pc_components.jpg" alt="PC Components" class="img1">
+    </div>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg fixed-top" role="navigation">
         <a class="navbar-brand" href="home.html">PC Building Advisor</a>
@@ -91,101 +95,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-auto">
-            <!-- About -->
-            <div>
-                <div class="page-header">
-                    <h1>
-                        <a name="about"></a>My Styles</h1>
-                </div>
-                <p>This page contains specific style guide information for my front end interface.</p>
-            </div>
-            <!-- End About -->
-
-            <!-- Fonts -->
-            <div>
-                <div class="page-header">
-                    <h1>
-                        <a name="fonts"></a>Font</h1>
-                </div>
-                <p>My application utilizes the "Source Sans Pro", "sans-serif" font-family with grey text.</p>
-            </div>
-            <div class="spacer">
-                <a href="#Top">Back to Top</a>
-            </div>
-            <!-- End Fonts -->
-
-            <!-- Color Theme -->
-            <div>
-                <div class="page-header">
-                    <h1>
-                        <a name="colorTheme"></a>Color Theme</h1>
-                </div>
-                <p>My application incorporates the below color scheme in its interface.</p>
-                <div class="box" id="primary1"></div>
-                <div class="box" id="primary2"></div>
-                <div class="box" id="primary3"></div>
-            </div>
-            <div class="spacer">
-              <a href="#Top">Back to Top</a>
-            </div>
-            <!-- End Color Theme -->
-
-            <!-- Headings -->
-            <div>
-                <div class="page-header">
-                    <h1>
-                        <a name="headings"></a>Headings</h1>
-                </div>
-                <p>The below font sizes and styles are used in the application for various content headings.</p>
-                <h1>Heading 1</h1>
-                <h2>Heading 2</h2>
-                <h3>Heading 3</h3>
-            </div>
-            <div class="spacer">
-                <a href="#Top">Back to Top</a>
-            </div>
-            <!-- End Headings -->
-
-            <!-- Buttons -->
-            <div>
-                <div class="page-header">
-                    <h1>
-                        <a name="button"></a>Buttons</h1>
-                </div>
-                <p>The application will feature buttons that contain the below color and shape:</p>
-                <button>My Button</button>
-            </div>
-            <div class="spacer">
-                <a href="#Top">Back to Top</a>
-            </div>
-            <!-- End Buttons -->
-
-            <!-- Form Elements -->
-            <div>
-                <div class="page-header">
-                    <h1>
-                        <a name="formElements"></a>Form Elements</h1>
-                </div>
-                <p>The form that the application will contain is dropdowns and labels with the below styling:</p>
-                <form>
-                  <label for="dropdown_option">Choose an Option:</label>
-                  <select id="dropdown_option" name="Option">
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                    <option value="option4">Option 4</option>
-                  </select>
-                </form><br>
-            </div>
-            <div class="spacer">
-                <a href="#Top">Back to Top</a>
-            </div>
-        </div>
     </div>
+    <div class="container">
+        <button onclick="analyzeComponents()" class="actionbtn">Analyze</button><br>
+        <label for="displayValue">Analysis Results: </label><output type="textbox" name="display"></output>
+    </div>
+    <div class="spacer">
+        <a href="#Top">Back to Top</a>
+    </div>
+    <!-- Footer -->
     <div id="footer">
         <div class="container">
-            <p class="text-muted">Copyright My Style Guide</p>
+            <p class="text-muted">Copyright Marcel Willis</p>
         </div>
     </div>
 </body>

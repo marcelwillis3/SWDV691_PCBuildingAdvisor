@@ -7,6 +7,11 @@
 
 .navbar a:hover{
   background-color: #3B7E8F;
+  border-radius: 12px;
+}
+
+.nav-item {
+  border-radius: 12px;
 }
 
 .active {
@@ -23,6 +28,16 @@
 
 .navbar-toggler-icon{
   background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.spacer, .text-muted{
+  text-align: center;
+  margin-top: 100px;
+}
+
+.img.img1{
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .box {
@@ -53,6 +68,18 @@
 .container{
   margin-top: 100px;
   max-width: 100%;
+  text-align: center;
+}
+
+/* Action Button*/
+.actionbtn{
+  justify-content: center;
+  background-color: #1495B5;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
 }
 
 /* Dropdown Button */
@@ -63,16 +90,17 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
+  border-radius: 12px;
 }
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {background-color: #3B7E8F;}
+/* Button on hover & focus */
+.dropbtn:hover, .dropbtn:focus, .actionbtn:hover, .actionbtn:focus {background-color: #3B7E8F;}
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {position: relative;display: inline-block;}
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {display: none;position: relative;background-color: #1495B5;min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;}
+.dropdown-content {display: none;position: relative;background-color: #1495B5;min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;border-radius: 12px;}
 
 /* Links inside the dropdown */
 .dropdown-content a {color: black;padding: 12px 16px;text-decoration: none;display: block;}
