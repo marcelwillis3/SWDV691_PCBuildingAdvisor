@@ -71,6 +71,12 @@
   text-align: center;
 }
 
+.container2{
+  margin-top: 100px;
+  max-width: 100%;
+  text-align: left;
+}
+
 /* Action Button*/
 .actionbtn{
   justify-content: center;
