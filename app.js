@@ -1,18 +1,19 @@
-// Connect to the backend database using express and MongoDB
-var express = require('express');
-var app = express();
+// Create dependencies and useful variables
+const express = require('express');
+const routes = require('./routes/index');
+const router = express.Router();
+const app = express();
 
-const mongoose = require('mongoose');
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://app-user:n0tTh3b3%24t@cluster0.ufvfo.mongodb.net/PCComponentsDB?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// Export the Express app to be imported and used in other files
+app.use('/', routes);
+module.exports = app;
 
-// Connect to the web server
-app.listen(3000, () => {
-    console.log('Server listening on 3000');
-});
+// Serve static files
+app.use('/css', express.static(__dirname + '/css'));
+app.use('/pics', express.static(__dirname + '/pics'));
+app.use('/views', express.static(__dirname + '/views'));
 
-// Connect to the MongoDB database
-mongoose.connect(uri, ()  => {
-    console.log('Connected to MongoDB Successfully!!');
+// Post the html file
+router.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/views/home.html'));
 });

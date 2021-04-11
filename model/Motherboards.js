@@ -5,3 +5,5 @@ const moboSchema = mongoose.Schema({
     model:  String,
     socket: String,
 })
+
+module.exports = mongoose.model('Motherboards', moboSchema);
