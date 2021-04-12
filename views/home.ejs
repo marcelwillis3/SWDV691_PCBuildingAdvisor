@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Home page for the PC Building Advisor application.">
+    <meta name="author" content="Marcel Willis">
+    <!-- Site theme -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/custom.css">
+    <link rel="icon" href="/images/pc_stock_photo0.jpg">
+    <!-- Site font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ce0b201871.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function dropdownFunction(id) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                if (dropdowns[i] != document.getElementById(id)) {
+                                        openDropdown.classList.remove('show');
+                                }
+                        }
+            document.getElementById(id).classList.toggle("show");
+          }
+          
+          // Close the dropdown menu if the user clicks outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }
+    </script>
+    <script type="text/javascript">
+        function analyzeComponents() {
+            // TODO
+            console.log("Analyzing selected PC components.");
+            }
+    </script>
+</head>
+<body>
+    <!--Background Image-->
+    <div role="img1" aria-label="PC Components">
+        <img src="/images/pc_components.jpg" alt="PC Components" class="img1">
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top" role="navigation">
+        <a class="navbar-brand" href="/">PC Building Advisor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/"><i class="fa fa-fw fa-home"></i>Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/howtouse"><i class="fas fa-laptop-code"></i>How To Use<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contactus"><i class="far fa-address-card"></i>Contact Us<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Webpage Container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>Mobos</h1>
+                <div class="dropdown">
+                    <button onclick="dropdownFunction('Mobos')" class="dropbtn">Select your motherboard</button>
+                    <div id="Mobos" class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h1>CPUs</h1>
+                <div class="dropdown">
+                    <button onclick="dropdownFunction('CPUs')" class="dropbtn">Select your CPU</button>
+                    <div id="CPUs" class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h1>GPUs</h1>
+                <div class="dropdown">
+                    <button onclick="dropdownFunction('GPUs')" class="dropbtn">Select your GPU</button>
+                    <div id="GPUs" class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h1>Power Supplies</h1>
+                <div class="dropdown">
+                    <button onclick="dropdownFunction('PSUs')" class="dropbtn">Select your power supply</button>
+                    <div id="PSUs" class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <button onclick="analyzeComponents()" class="actionbtn">Analyze</button><br>
+        <label for="displayValue">Analysis Results: </label><output type="textbox" name="display"></output>
+    </div>
+    <div class="spacer">
+        <a href="#Top">Back to Top</a>
+    </div>
+    <!-- Footer -->
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">Copyright Marcel Willis</p>
+        </div>
+    </div>
+</body>
+</html>

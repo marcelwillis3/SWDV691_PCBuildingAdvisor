@@ -1,16 +1,19 @@
-// Import Express into the route file and use the router to respond to any requests to the root URL.
-const express = require('express');
-const path = require('path');
+var express = require('express');
+var router = express.Router();
 
-const router = express.Router();
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('home', { title: 'PC Building Advisor' });
+});
 
-/*router.get('/', (req, res) => {
-  res.send('It works!');
-});*/
+/* GET how-to page. */
+router.get('/howtouse', function(req, res, next) {
+  res.render('howtouse', {title: 'PC Building Advisor'})
+});
 
-// Post the html file
-router.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '../views/home.html'));
+/* GET contact page. */
+router.get('/contactus', function(req, res, next) {
+  res.render('contactus', {title: 'PC Building Advisor'})
 });
 
 module.exports = router;
