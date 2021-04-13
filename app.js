@@ -3,11 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var db = require('monk')('mongodb+srv://app-user:n0tTh3b3%24t@cluster0.ufvfo.mongodb.net/PCComponentsDB?retryWrites=true&w=majority');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+// Connection to database
+db.then(() => {
+  console.log("MongoDB connection successful!");
+}).catch((err) => {
+  console.log("Database connection error");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,6 +26,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Make database accessible to the router
+app.use(function(req, res, next){
+  req.db = db;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

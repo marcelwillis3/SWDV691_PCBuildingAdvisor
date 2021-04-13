@@ -89,9 +89,13 @@
                 <div class="dropdown">
                     <button onclick="dropdownFunction('Mobos')" class="dropbtn">Select your motherboard</button>
                     <div id="Mobos" class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        <%
+                            var list = '';
+                            for (i = 0; i < mobos.length; i++) {
+                                list += '<a href="#">' + mobos[i].brand + ' ' + mobos[i].model + '</a>';
+                            }
+                        %>
+                        <%- list %>
                     </div>
                 </div>
             </div>
