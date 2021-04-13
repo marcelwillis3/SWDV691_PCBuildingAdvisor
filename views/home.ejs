@@ -119,9 +119,13 @@
                 <div class="dropdown">
                     <button onclick="dropdownFunction('GPUs')" class="dropbtn">Select your GPU</button>
                     <div id="GPUs" class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        <%
+                            var list = '';
+                            for (i = 0; i < gpus.length; i++) {
+                                list += '<a href="#">' + gpus[i].brand + ' ' + gpus[i].model + '</a>';
+                            }
+                        %>
+                        <%- list %>
                     </div>
                 </div>
             </div>
@@ -130,9 +134,13 @@
                 <div class="dropdown">
                     <button onclick="dropdownFunction('PSUs')" class="dropbtn">Select your power supply</button>
                     <div id="PSUs" class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        <%
+                            var list = '';
+                            for (i = 0; i < psus.length; i++) {
+                                list += '<a href="#">' + psus[i].brand + ' ' + psus[i].model + '</a>';
+                            }
+                        %>
+                        <%- list %>
                     </div>
                 </div>
             </div>
