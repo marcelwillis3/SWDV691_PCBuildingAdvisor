@@ -2,15 +2,26 @@ var express = require('express');
 var router = express.Router();
 
 // GET home page
-// TODO: figure out how to render multiple collections
 router.get('/', function(req, res) {
   var db = req.db;
   var mobo_collection = db.get('Motherboards');
-  mobo_collection.find({}, {}, function(err, docs) {
-    res.render('home', {
-      title: 'PC Building Advisor',
-      mobos: docs
-    });
+  var cpu_collection = db.get('CPUs');
+  mobo_collection.find({}, {}, function(err, mobo_docs) {
+    if (err) {
+      console.log(err);
+    } else {
+      cpu_collection.find({}, {}, function(err, cpu_docs) {
+        if (err) {
+          console.log(err);
+        } else{
+          res.render('home', {
+            title: 'PC Building Advisor',
+            mobos: mobo_docs,
+            cpus: cpu_docs
+          });
+        }
+      });
+      }
   });
 });
 

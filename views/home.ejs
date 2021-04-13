@@ -104,9 +104,13 @@
                 <div class="dropdown">
                     <button onclick="dropdownFunction('CPUs')" class="dropbtn">Select your CPU</button>
                     <div id="CPUs" class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        <%
+                            var list = '';
+                            for (i = 0; i < cpus.length; i++) {
+                                list += '<a href="#">' + cpus[i].brand + ' ' + cpus[i].name + '</a>';
+                            }
+                        %>
+                        <%- list %>
                     </div>
                 </div>
             </div>
