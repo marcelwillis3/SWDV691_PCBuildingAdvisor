@@ -21,39 +21,93 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ce0b201871.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function dropdownFunction(id) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                                var openDropdown = dropdowns[i];
-                                if (dropdowns[i] != document.getElementById(id)) {
-                                        openDropdown.classList.remove('show');
-                                }
-                        }
-            document.getElementById(id).classList.toggle("show");
-          }
-          
-          // Close the dropdown menu if the user clicks outside of it
-          window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-              var dropdowns = document.getElementsByClassName("dropdown-content");
-              var i;
-              for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                  openDropdown.classList.remove('show');
-                }
-              }
-            }
-          }
-    </script>
-    <script type="text/javascript">
         function analyzeComponents() {
             // TODO
             console.log("Analyzing selected PC components.");
             }
+    </script>
+    <script>
+        // Script to render a custom dropdown. Source: https://www.w3schools.com/howto/howto_custom_select.asp
+        var x, i, j, l, ll, selElmnt, a, b, c;
+        /* Look for any elements with the class "custom-select": */
+        x = document.getElementsByClassName("custom-select");
+        l = x.length;
+        for (i = 0; i < l; i++) {
+          selElmnt = x[i].getElementsByTagName("select")[0];
+          ll = selElmnt.length;
+          /* For each element, create a new DIV that will act as the selected item: */
+          a = document.createElement("DIV");
+          a.setAttribute("class", "select-selected");
+          a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+          x[i].appendChild(a);
+          /* For each element, create a new DIV that will contain the option list: */
+          b = document.createElement("DIV");
+          b.setAttribute("class", "select-items select-hide");
+          for (j = 1; j < ll; j++) {
+            /* For each option in the original select element,
+            create a new DIV that will act as an option item: */
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            c.addEventListener("click", function(e) {
+                /* When an item is clicked, update the original select box,
+                and the selected item: */
+                var y, i, k, s, h, sl, yl;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                sl = s.length;
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < sl; i++) {
+                  if (s.options[i].innerHTML == this.innerHTML) {
+                    s.selectedIndex = i;
+                    h.innerHTML = this.innerHTML;
+                    y = this.parentNode.getElementsByClassName("same-as-selected");
+                    yl = y.length;
+                    for (k = 0; k < yl; k++) {
+                      y[k].removeAttribute("class");
+                    }
+                    this.setAttribute("class", "same-as-selected");
+                    break;
+                  }
+                }
+                h.click();
+            });
+            b.appendChild(c);
+          }
+          x[i].appendChild(b);
+          a.addEventListener("click", function(e) {
+            /* When the select box is clicked, close any other select boxes,
+            and open/close the current select box: */
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+          });
+        }
+
+        function closeAllSelect(elmnt) {
+          /* A function that will close all select boxes in the document,
+          except the current select box: */
+          var x, y, i, xl, yl, arrNo = [];
+          x = document.getElementsByClassName("select-items");
+          y = document.getElementsByClassName("select-selected");
+          xl = x.length;
+          yl = y.length;
+          for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+              arrNo.push(i)
+            } else {
+              y[i].classList.remove("select-arrow-active");
+            }
+          }
+          for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+              x[i].classList.add("select-hide");
+            }
+          }
+        }
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect);
     </script>
 </head>
 <body>
@@ -85,63 +139,63 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <h1>Mobos</h1>
-                <div class="dropdown">
-                    <button onclick="dropdownFunction('Mobos')" class="dropbtn">Select your motherboard</button>
-                    <div id="Mobos" class="dropdown-content">
+                <h1>Motherboards</h1>
+                <div class="custom-select">
+                    <select id="selected_mobo">
+                        <option value="">Select your MoBo</option>
                         <%
                             var list = '';
                             for (i = 0; i < mobos.length; i++) {
-                                list += '<a href="#">' + mobos[i].brand + ' ' + mobos[i].model + '</a>';
+                                list += '<option value='+ mobos[i].socket +'>' + mobos[i].brand + ' ' + mobos[i].model + '</option>';
                             }
                         %>
                         <%- list %>
-                    </div>
+                    </select>
                 </div>
             </div>
             <div class="col-md-3">
                 <h1>CPUs</h1>
-                <div class="dropdown">
-                    <button onclick="dropdownFunction('CPUs')" class="dropbtn">Select your CPU</button>
-                    <div id="CPUs" class="dropdown-content">
+                <div class="custom-select">
+                    <select id="selected_cpu">
+                        <option value="">Select your CPU</option>
                         <%
                             var list = '';
                             for (i = 0; i < cpus.length; i++) {
-                                list += '<a href="#">' + cpus[i].brand + ' ' + cpus[i].name + '</a>';
+                                list += '<option value='+ cpus[i].socket +'>' + cpus[i].brand + ' ' + cpus[i].name + '</option>';
                             }
                         %>
                         <%- list %>
-                    </div>
+                    </select>
                 </div>
             </div>
             <div class="col-md-3">
                 <h1>GPUs</h1>
-                <div class="dropdown">
-                    <button onclick="dropdownFunction('GPUs')" class="dropbtn">Select your GPU</button>
-                    <div id="GPUs" class="dropdown-content">
+                <div class="custom-select">
+                    <select id="selected_gpu">
+                        <option value="">Select your GPU</option>
                         <%
                             var list = '';
                             for (i = 0; i < gpus.length; i++) {
-                                list += '<a href="#">' + gpus[i].brand + ' ' + gpus[i].model + '</a>';
+                                list += '<option value='+ gpus[i].recommend_watts +'>' + gpus[i].brand + ' ' + gpus[i].model + '</option>';
                             }
                         %>
                         <%- list %>
-                    </div>
+                    </select>
                 </div>
             </div>
             <div class="col-md-3">
                 <h1>Power Supplies</h1>
-                <div class="dropdown">
-                    <button onclick="dropdownFunction('PSUs')" class="dropbtn">Select your power supply</button>
-                    <div id="PSUs" class="dropdown-content">
+                <div class="custom-select">
+                    <select id="selected_psu">
+                        <option value="">Select your PSU</option>
                         <%
                             var list = '';
                             for (i = 0; i < psus.length; i++) {
-                                list += '<a href="#">' + psus[i].brand + ' ' + psus[i].model + '</a>';
+                                list += '<option value='+ psus[i].max_watts +'>' + psus[i].brand + ' ' + psus[i].model + '</option>';
                             }
                         %>
                         <%- list %>
-                    </div>
+                    </select>
                 </div>
             </div>
         </div>

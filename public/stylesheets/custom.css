@@ -89,7 +89,7 @@
 }
 
 /* Dropdown Button */
-.dropbtn {
+.custom-select {
   background-color: #26515C;
   color: white;
   padding: 16px;
@@ -97,22 +97,81 @@
   border: none;
   cursor: pointer;
   border-radius: 12px;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+}
+
+.select-selected {
+  background-color: #26515C;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Hide original select box*/
+select {
+  appearance: none;
+  background-color: transparent; 
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
 }
 
 /* Button on hover & focus */
-.dropbtn:hover, .dropbtn:focus, .actionbtn:hover, .actionbtn:focus {background-color: #3B7E8F;}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {position: relative;display: inline-block;}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {display: none;position: relative;background-color: #1495B5;min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;border-radius: 12px;}
+.actionbtn:hover, .actionbtn:focus, .custom-select:focus, .custom-select:hover {background-color: #3B7E8F;}
 
 /* Links inside the dropdown */
-.dropdown-content a {color: black;padding: 12px 16px;text-decoration: none;display: block;}
+.custom-select option {color: black;padding: 12px 16px;text-decoration: none;display: block;}
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.custom-select option:hover {background-color: #ddd}
