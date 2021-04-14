@@ -22,9 +22,37 @@
     <script src="https://kit.fontawesome.com/ce0b201871.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function analyzeComponents() {
-            // TODO
+            // TODO - Need to clean up this logic. Figure out a way to store the alert and display it in the web page.
             console.log("Analyzing selected PC components.");
+            var mobo_connect = document.getElementById('selected_mobo').value;
+            var cpu_connect  = document.getElementById('selected_cpu').value;
+            var gpu_watt     = document.getElementById('selected_gpu').value;
+            var psu_watt     = document.getElementById('selected_psu').value;
+
+            if (mobo_connect == "") {
+                if (cpu_connect !="") {
+                    if (cpu_connect == mobo_connect) {
+                        alert("Your selected CPU and motherboard is compatiable!");
+                    } else {
+                        alert("Your selected CPU and motherboard is NOT compatiable!");
+                    }
+                } else {
+                    alert("Please select a CPU.");
+                }
+            } else if (gpu_watt != 0) {
+                if (psu_watt != 0) {
+                    if (psu_watt >= gpu_watt) {
+                        alert("Your selected PSU has enough power for your selected GPU!");
+                    } else {
+                        alert("Your selected PSU does NOT have enough power for your selected GPU!")
+                    }
+                } else {
+                    alert("Please select a PSU")
+                }
+            } else {
+                alert("Please select a PC component to begin.")
             }
+        }
     </script>
     <script>
         // Script to render a custom dropdown. Source: https://www.w3schools.com/howto/howto_custom_select.asp
@@ -172,7 +200,7 @@ document.addEventListener("click", closeAllSelect);
                 <h1>GPUs</h1>
                 <div class="custom-select">
                     <select id="selected_gpu">
-                        <option value="">Select your GPU</option>
+                        <option value=0>Select your GPU</option>
                         <%
                             var list = '';
                             for (i = 0; i < gpus.length; i++) {
@@ -187,7 +215,7 @@ document.addEventListener("click", closeAllSelect);
                 <h1>Power Supplies</h1>
                 <div class="custom-select">
                     <select id="selected_psu">
-                        <option value="">Select your PSU</option>
+                        <option value=0>Select your PSU</option>
                         <%
                             var list = '';
                             for (i = 0; i < psus.length; i++) {
