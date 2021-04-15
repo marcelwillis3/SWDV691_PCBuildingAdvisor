@@ -22,36 +22,57 @@
     <script src="https://kit.fontawesome.com/ce0b201871.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function analyzeComponents() {
-            // TODO - Need to clean up this logic. Figure out a way to store the alert and display it in the web page.
             console.log("Analyzing selected PC components.");
-            var mobo_connect = document.getElementById('selected_mobo').value;
-            var cpu_connect  = document.getElementById('selected_cpu').value;
-            var gpu_watt     = document.getElementById('selected_gpu').value;
-            var psu_watt     = document.getElementById('selected_psu').value;
+            var analysis_data    = "";
+            var mobo_cpu_works   = false;
+            var mobo_cpu_checked = false;
+            var gpu_psu_works    = false;
+            var gpu_psu_checked  = false;
+            var mobo_connect     = document.getElementById('selected_mobo').value;
+            var cpu_connect      = document.getElementById('selected_cpu').value;
+            var gpu_watt         = document.getElementById('selected_gpu').value;
+            var psu_watt         = document.getElementById('selected_psu').value;
 
-            if (mobo_connect == "") {
-                if (cpu_connect !="") {
-                    if (cpu_connect == mobo_connect) {
-                        alert("Your selected CPU and motherboard is compatiable!");
-                    } else {
-                        alert("Your selected CPU and motherboard is NOT compatiable!");
-                    }
-                } else {
-                    alert("Please select a CPU.");
-                }
-            } else if (gpu_watt != 0) {
-                if (psu_watt != 0) {
-                    if (psu_watt >= gpu_watt) {
-                        alert("Your selected PSU has enough power for your selected GPU!");
-                    } else {
-                        alert("Your selected PSU does NOT have enough power for your selected GPU!")
-                    }
-                } else {
-                    alert("Please select a PSU")
+            // Check motherboard and CPU
+            if (mobo_connect != "" && cpu_connect != "") {
+                if (mobo_connect == cpu_connect) {
+                    mobo_cpu_works   = true;
+                    mobo_cpu_checked = true;
+                } else { 
+                    mobo_cpu_works   = false;
+                    mobo_cpu_checked = true;
                 }
             } else {
-                alert("Please select a PC component to begin.")
+                mobo_cpu_checked = false;
+                analysis_data = "Please select your PC components to begin.";
             }
+
+            // Check GPU and PSU
+            if (gpu_watt != 0 && psu_watt != 0) {
+                if (gpu_watt <= psu_watt) {
+                    gpu_psu_works   = true;
+                    gpu_psu_checked = true;
+                } else { 
+                    gpu_psu_works   = false; 
+                    gpu_psu_checked = true;
+                }
+            } else {
+                gpu_psu_checked  = false;
+                analysis_data = "Please select your PC components to begin.";
+            }
+
+            // Check the selected build
+            if (mobo_cpu_checked && gpu_psu_checked) {
+                if (mobo_cpu_works && gpu_psu_works) {
+                    analysis_data = "Your selected build is compatible!"
+                } else if (!gpu_psu_works){
+                    analysis_data = "Your selected build does NOT have enough wattage. Try a different GPU and power supply combo.";
+                } else {
+                    // Motherboard and CPU is not compatible.
+                    analysis_data = "Your selected build is NOT compatible. Try a different motherboard and CPU combo.";
+                }
+            }
+            document.getElementById('displayValue').value = analysis_data;
         }
     </script>
     <script>
@@ -230,7 +251,8 @@ document.addEventListener("click", closeAllSelect);
     </div>
     <div class="container">
         <button onclick="analyzeComponents()" class="actionbtn">Analyze</button><br>
-        <label for="displayValue">Analysis Results: </label><output type="textbox" name="display"></output>
+        <label for="displayValue">Analysis Results: </label><br>
+        <input type="textbox" id="displayValue">
     </div>
     <div class="spacer">
         <a href="#Top">Back to Top</a>
