@@ -53,18 +53,35 @@
     <!-- Webpage Container -->
     <div class="container2">
         <h1>Contact Us</h1>
-        <ul>
-            <li>
-                <h3><a href = "mailto: mwillis1@live.maryville.edu">Send Us An Email</a></h3>
-            </li>
-            <li>
-                <h3>Suggestions? Enter Below:</h3>
-            </li>
-        </ul>
-        <input type="text" class="box">
-        <div class="container">
-            <button onclick="sendSuggestion()" class="actionbtn">Send Suggestion</button>
-        </div>
+        <h3><a href = "mailto: mwillis1@live.maryville.edu">Send Us An Email</a></h3>
+        <h3 style="padding-top: 50px;">Add a Motherboard to the Database:</h3>
+        <form id="formAddMobo" name="addMobo" method="POST" action="/addMobo">
+            <input type="text" id="moboBrand" placeholder="Motherboard brand" name="moboBrand"/>
+            <input type="text" id="moboModel" placeholder="Motherboard model" name="moboModel"/>
+            <input type="text" id="moboSocket" placeholder="Motherboard socket" name="moboSocket"/><br>
+            <button class="actionbtn">Submit</button>
+        </form>
+        <h3 style="padding-top: 50px;">Add a CPU to the Database:</h3>
+        <form id="formAddCpu" name="addCpu" method="POST" action="/addCpu">
+            <input type="text" id="cpuBrand" placeholder="CPU brand" name="cpuBrand"/>
+            <input type="text" id="cpuModel" placeholder="CPU name" name="cpuName"/>
+            <input type="text" id="cpuSocket" placeholder="CPU socket" name="cpuSocket"/><br>
+            <button class="actionbtn">Submit</button>
+        </form>
+        <h3 style="padding-top: 50px;">Add a GPU to the Database:</h3>
+        <form id="formAddGpu" name="addGpu" method="POST" action="/addGpu">
+            <input type="text" id="gpuBrand" placeholder="GPU brand" name="gpuBrand"/>
+            <input type="text" id="gpuModel" placeholder="GPU model" name="gpuModel"/>
+            <input type="number" id="gpuSocket" placeholder="GPU Recommended Watts" name="gpuWatts"/><br>
+            <button class="actionbtn">Submit</button>
+        </form>
+        <h3 style="padding-top: 50px;">Add a PSU to the Database:</h3>
+        <form id="formAddPsu" name="addPsu" method="POST" action="/addPsu">
+            <input type="text" id="psuBrand" placeholder="PSU brand" name="psuBrand"/>
+            <input type="text" id="psuModel" placeholder="PSU model" name="psuModel"/>
+            <input type="number" id="psuSocket" placeholder="PSU Max Watts" name="psuWatts"/><br>
+            <button class="actionbtn">Submit</button>
+        </form>
     </div>
     <div class="spacer">
         <a href="#Top">Back to Top</a>
