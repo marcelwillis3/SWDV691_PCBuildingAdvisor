@@ -19,11 +19,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ce0b201871.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        function sendSuggestion() {
-           console.log("Sending Suggestion.");
-         }
-    </script>
 </head>
 <body>
     <!--Background Image-->
@@ -72,14 +67,16 @@
         <form id="formAddGpu" name="addGpu" method="POST" action="/addGpu">
             <input type="text" id="gpuBrand" placeholder="GPU brand" name="gpuBrand"/>
             <input type="text" id="gpuModel" placeholder="GPU model" name="gpuModel"/>
-            <input type="number" id="gpuSocket" placeholder="GPU Recommended Watts" name="gpuWatts"/><br>
+            <p>GPU Recommended Wattage:</p>
+            <input type="number" id="gpuWatts" name="gpuWatts"/><br>
             <button class="actionbtn">Submit</button>
         </form>
         <h3 style="padding-top: 50px;">Add a PSU to the Database:</h3>
         <form id="formAddPsu" name="addPsu" method="POST" action="/addPsu">
             <input type="text" id="psuBrand" placeholder="PSU brand" name="psuBrand"/>
             <input type="text" id="psuModel" placeholder="PSU model" name="psuModel"/>
-            <input type="number" id="psuSocket" placeholder="PSU Max Watts" name="psuWatts"/><br>
+            <p>PSU Max Wattage:</p>
+            <input type="number" id="psuWatts" name="psuWatts"/><br>
             <button class="actionbtn">Submit</button>
         </form>
     </div>

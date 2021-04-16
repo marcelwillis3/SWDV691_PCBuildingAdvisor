@@ -69,10 +69,10 @@ router.post('/addMobo', function(req, res) {
 
   // Submit to the DB
   collection.insert({
-    "type": "motherboard",
-    "brand": mobo_brand,
-    "model": mobo_model,
-    "socket": mobo_scket
+    type: "motherboard",
+    brand: mobo_brand,
+    model: mobo_model,
+    socket: mobo_scket
   }, function(err, doc) {
     if (err) {
       // Return error if database insert failed
@@ -100,10 +100,10 @@ router.post('/addCpu', function(req, res) {
 
   // Submit to the DB
   collection.insert({
-    "type": "cpu",
-    "brand": cpu_brand,
-    "name": cpu_name,
-    "socket": cpu_scket
+    type: "cpu",
+    brand: cpu_brand,
+    name: cpu_name,
+    socket: cpu_scket
   }, function(err, doc) {
     if (err) {
       // Return error if database insert failed
@@ -124,17 +124,17 @@ router.post('/addGpu', function(req, res) {
   // Get our form values.
   var gpu_brand = req.body.gpuBrand;
   var gpu_model = req.body.gpuModel;
-  var gpu_watts = req.body.gpuWatts;
+  var gpu_watts = req.body.gpuWatts.value;
 
   // Set the collection
   var collection = db.get('GPUs');
 
   // Submit to the DB
   collection.insert({
-    "type": "gpu",
-    "brand": gpu_brand,
-    "model": gpu_model,
-    "recommend_watts": gpu_watts
+    type: "gpu",
+    brand: gpu_brand,
+    model: gpu_model,
+    recommend_watts: gpu_watts
   }, function(err, doc) {
     if (err) {
       // Return error if database insert failed
@@ -155,17 +155,17 @@ router.post('/addPsu', function(req, res) {
   // Get our form values.
   var psu_brand = req.body.psuBrand;
   var psu_model = req.body.psuModel;
-  var psu_watts = req.body.psuWatts;
+  var psu_watts = req.body.psuWatts.value;
 
   // Set the collection
   var collection = db.get('PSUs');
 
   // Submit to the DB
   collection.insert({
-    "type": "psu",
-    "brand": psu_brand,
-    "model": psu_model,
-    "max_watts": psu_watts
+    type: "psu",
+    brand: psu_brand,
+    model: psu_model,
+    max_watts: psu_watts
   }, function(err, doc) {
     if (err) {
       // Return error if database insert failed
