@@ -22,6 +22,7 @@
     <script src="https://kit.fontawesome.com/ce0b201871.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function analyzeComponents() {
+            /*Function for determining the compatability of the user's selected PC build.*/
             console.log("Analyzing selected PC components.");
             var analysis_data    = "";
             var mobo_cpu_works   = false;
@@ -191,6 +192,7 @@ document.addEventListener("click", closeAllSelect);
                 <h1>Motherboards</h1>
                 <div class="custom-select">
                     <select id="selected_mobo">
+                        <!--Populate the motherboard dropdown with items from database-->
                         <option value="">Select your MoBo</option>
                         <%
                             var list = '';
@@ -206,6 +208,7 @@ document.addEventListener("click", closeAllSelect);
                 <h1>CPUs</h1>
                 <div class="custom-select">
                     <select id="selected_cpu">
+                        <!--Populate the CPU dropdown with items from database-->
                         <option value="">Select your CPU</option>
                         <%
                             var list = '';
@@ -221,6 +224,7 @@ document.addEventListener("click", closeAllSelect);
                 <h1>GPUs</h1>
                 <div class="custom-select">
                     <select id="selected_gpu">
+                        <!--Populate the GPU dropdown with items from database-->
                         <option value=0>Select your GPU</option>
                         <%
                             var list = '';
@@ -236,6 +240,7 @@ document.addEventListener("click", closeAllSelect);
                 <h1>Power Supplies</h1>
                 <div class="custom-select">
                     <select id="selected_psu">
+                        <!--Populate the PSU dropdown with items from database-->
                         <option value=0>Select your PSU</option>
                         <%
                             var list = '';

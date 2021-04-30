@@ -1,3 +1,4 @@
+// Setup the express router
 var express = require('express');
 var router = express.Router();
 
@@ -9,7 +10,7 @@ router.get('/', function(req, res) {
   var gpu_collection = db.get('GPUs');
   var psu_collection = db.get('PSUs');
 
-  // Find the data in each collection and store in variable to render the page
+  // Find the data in each database collection and store in variable to render the page
   mobo_collection.find({}, {}, function(err, mobo_docs) {
     if (err) {
       console.log(err);
