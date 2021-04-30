@@ -51,13 +51,14 @@ label {
   padding-top: 50px;
 }
 
-.box, input {
+.box, input, textarea {
   background-color: rgba(255, 255, 255, 0.267);
-  height: 50px;
+  height: auto;
   width: 50%;
   display: inline-block;
   margin: 0 10px 0 10px;
   border-radius: 12px;
+  resize: none;
 }
 
 .row:after {
