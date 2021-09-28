@@ -5,4 +5,4 @@ The purpose of the PC Building Advisor is to allow users to select different PC 
 To debug the web application, run npm start in your repo clone directory.
 Open http://localhost:3000
 
-Deployed Website located here: http://pcbuildingadvisor-env.eba-hbw4u6d5.us-east-2.elasticbeanstalk.com/
+Deployed Website located here (NOW DEFUNCT): http://pcbuildingadvisor-env.eba-hbw4u6d5.us-east-2.elasticbeanstalk.com/
